@@ -22,7 +22,7 @@ class S(BaseHTTPRequestHandler):
             self.wfile.write("<html><body><h1>ah! ah! ah! No dijiste la palabra magica.</h1></body></html>")        
         
 def run(server_class=HTTPServer, handler_class=S, port=80):
-    server_address = ('127.0.0.1', port) # attached to local host as this is intendes to be internal only
+    server_address = ('127.0.0.1', port) # attached to local host as this is intended to be internal only
     httpd = server_class(server_address, handler_class)
     print 'Starting httpd...'
     httpd.serve_forever()

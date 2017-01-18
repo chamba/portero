@@ -13,6 +13,10 @@ Serial.begin(9600);
 // initialize the digital pin as an output.
 pinMode(led, OUTPUT);
 pinMode(opto, OUTPUT);
+
+digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
+digitalWrite(opto, HIGH);
+
 }
 
 // the loop routine runs over and over again forever:
@@ -25,20 +29,22 @@ void loop()
 
                 // say what you got:
                 //Serial.print("I received: ");
-                Serial.println("0"); // print that condition was not meet, false
+                
 
                 // if MAGIC key is sent trigger
                 if ( incomingByte == MAGIC ) {
                     Serial.println("1"); // print that condition was meet, true
 
                     digitalWrite(led, HIGH);   // turn the LED on (HIGH is the voltage level)
-                    digitalWrite(opto, HIGH);
+                    digitalWrite(opto, LOW);
                     delay(3500);               // wait for a 3.5 secs
                     digitalWrite(led, LOW);    // turn the LED off by making the voltage LOW
-                    digitalWrite(opto, LOW);
+                    digitalWrite(opto, HIGH);
 
                     serialFlush(); //clear any request made while waiting
-                    }
+                } else {
+                  Serial.println("0"); // print that condition was not meet, false
+                }
         }
 
 }
